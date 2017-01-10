@@ -27,16 +27,23 @@ define( 'BV_GF_VERSION', '1.0.0' );
 /* Init
 ------------------------------------------ */
 
-/* Load plugin in "plugins_loaded" hook */
-add_action( 'plugins_loaded', 'bv_gf_init' );
+/* Load plugin in "gform_loaded" hook */
+add_action( 'gform_loaded', 'bv_gf_init' );
 
 /**
  * Plugin Init
  * @since 0.1.0
+ * @link https://www.gravityhelp.com/documentation/article/add-on-framework/
  */
 function bv_gf_init(){
 
-	
+	/* Check if method exists */
+	if ( ! method_exists( 'GFForms', 'include_addon_framework' ) ) {
+		return;
+	}
+
+	/* Load Settings */
+	require_once( BV_GF_PATH . 'includes/settings.php' );
 }
 
 
