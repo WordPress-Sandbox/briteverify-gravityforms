@@ -60,6 +60,9 @@ function bv_gf_init(){
 
 	/* Load Settings */
 	require_once( BV_GF_PATH . 'includes/settings.php' );
+
+	/* Field Settings */
+	require_once( BV_GF_PATH . 'includes/field-settings.php' );
 }
 
 

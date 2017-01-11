@@ -1,6 +1,6 @@
 <?php
 /**
- * Additional GF Settings
+ * GravityForms Settings
  * @since 1.0.0
 **/
 if ( ! defined( 'WPINC' ) ) { die; }
@@ -35,7 +35,7 @@ class BV_GF_Settings{
 		add_action( 'gform_settings_bv_gf', array( $this, 'settings' ) );
 
 		/* Add tooltips */
-		//add_filter( 'gform_tooltips', array( $this, 'add_tooltips' ) );
+		add_filter( 'gform_tooltips', array( $this, 'add_tooltips' ) );
 	}
 
 
@@ -57,10 +57,10 @@ class BV_GF_Settings{
 	 * Settings Content
 	 * @since 1.0.0
 	 */
-	function settings(){
+	public function settings(){
 
 		/* Submit Settings */
-		if ( isset( $_POST['submit'], $_POST['bv_gf_api_key'], $_POST['gforms_update_settings'] ) ) {
+		if ( isset( $_POST['submit'], $_POST['gforms_update_settings'] ) ) {
 
 			/* Check admin referer/Nonce */
 			check_admin_referer( 'gforms_update_settings', 'gforms_update_settings' );
@@ -70,12 +70,32 @@ class BV_GF_Settings{
 				die( esc_html__( "You don't have adequate permission to edit settings.", 'briteverify-gravityforms' ) );
 			}
 
-			/* Save Settings */
-			if( $_POST['bv_gf_api_key'] ){
-				update_option( 'bv_gf_api_key', esc_html( $_POST['bv_gf_api_key'] ) );
+			/* === Save Settings === */
+
+			/* API Key */
+			if( isset( $_POST['bv_gf_api_key'] ) ){
+				if( $_POST['bv_gf_api_key'] ){
+					update_option( 'bv_gf_api_key', esc_html( $_POST['bv_gf_api_key'] ) );
+				}
+				else{
+					delete_option( 'bv_gf_api_key' );
+				}
+			}
+
+			/* Default: Enable */
+			if( isset( $_POST['bv_gf_enable'] ) ){
+				update_option( 'bv_gf_enable', 1 );
 			}
 			else{
-				delete_option( 'bv_gf_api_key' );
+					delete_option( 'bv_gf_enable' );
+			}
+
+			/* Default: Allow Disposable */
+			if( isset( $_POST['bv_gf_allow_disposable'] ) ){
+				update_option( 'bv_gf_allow_disposable', 1 );
+			}
+			else{
+				delete_option( 'bv_gf_allow_disposable' );
 			}
 
 			/* Admin Notice */
@@ -98,9 +118,10 @@ class BV_GF_Settings{
 			</p>
 
 			<table class="form-table">
+
 				<tr valign="top">
 					<th scope="row">
-						<label for="bv_gf_api_key"><?php esc_html_e( 'API Key', 'briteverify-gravityforms' ); ?></label>  <?php //gform_tooltip( 'bv_gf_api_key' ) ?>
+						<label for="bv_gf_api_key"><?php esc_html_e( 'API Key', 'briteverify-gravityforms' ); ?></label>
 					</th>
 					<td>
 						<input type="password" name="bv_gf_api_key" id="bv_gf_api_key" style="width:350px;" value="<?php echo sanitize_text_field( esc_html( get_option( 'bv_gf_api_key' ) ) ); ?>" />
@@ -108,6 +129,22 @@ class BV_GF_Settings{
 						<span class="gf_settings_description"><?php esc_html_e( 'API Key to connect to BriteVerify Real-Time API.', 'briteverify-gravityforms' ); ?></span>
 					</td>
 				</tr>
+
+				<tr valign="top">
+					<th scope="row">
+						<?php esc_html_e( 'Default Options', 'briteverify-gravityforms' ); ?>
+					</th>
+					<td>
+						<label>
+							<input type="checkbox" name="bv_gf_enable" id="bv_gf_enable" value="1" <?php checked( 1, get_option( 'bv_gf_enable' ) ); ?>> <?php esc_html_e( 'Enable in all email fields.', 'briteverify-gravityforms' ); ?> <?php gform_tooltip( 'bv_gf_enable' ) ?>
+						</label>
+						<br />
+						<label>
+							<input type="checkbox" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable" value="1" <?php checked( 1, get_option( 'bv_gf_allow_disposable' ) ); ?>> <?php esc_html_e( 'Allow disposable email.', 'briteverify-gravityforms' ); ?> <?php gform_tooltip( 'bv_gf_allow_disposable' ) ?>
+						</label>
+					</td>
+				</tr>
+
 			</table>
 
 			<p class="submit" style="text-align:left;">
@@ -122,9 +159,14 @@ class BV_GF_Settings{
 	 * Add tooltips
 	 * @since 1.0.0
 	 */
-	function add_tooltips( $tooltips ){
+	public function add_tooltips( $tooltips ){
 
-		$tooltips['bv_gf_api_key'] = '<h6>' . esc_html__( 'BriteVerify API Key', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( '....', 'briteverify-gravityforms' );
+		/* Default: Enable */
+		$tooltips['bv_gf_enable'] = '<h6>' . esc_html__( 'Enable In All Email Fields', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( 'This is the default option. You can still disable/enable this feature in each email field using field settings.', 'briteverify-gravityforms' );
+
+		/* Default: Allow Disposable */
+		$tooltips['bv_gf_allow_disposable'] = '<h6>' . esc_html__( 'Allow Disposable Email', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( 'This is the default option. You can still disable/enable this feature in each email field using field settings.', 'briteverify-gravityforms' );
+
 		return $tooltips;
 	}
 
