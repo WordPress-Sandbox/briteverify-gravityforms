@@ -75,7 +75,41 @@ class BV_GF_Settings{
 			/* API Key */
 			if( isset( $_POST['bv_gf_api_key'] ) ){
 				if( $_POST['bv_gf_api_key'] ){
-					update_option( 'bv_gf_api_key', esc_html( $_POST['bv_gf_api_key'] ) );
+
+					/* API Key */
+					$api_key = esc_html( trim( $_POST['bv_gf_api_key'] ) );
+
+					/* Check Key */
+					$url = add_query_arg( array(
+						'address' => urlencode( trim( get_option( 'admin_email' ) ) ),
+						'apikey'  => urlencode( trim( $api_key ) ),
+					), 'https://bpi.briteverify.com/emails.json' );
+					$raw_response = wp_remote_get( esc_url_raw( $url ) );
+					if ( ! is_wp_error( $raw_response ) && 200 == wp_remote_retrieve_response_code( $raw_response ) ) {
+						$data = json_decode( trim( wp_remote_retrieve_body( $raw_response ) ), true );
+						if( isset( $data['status'] ) ){
+							?>
+							<div class="updated fade" style="padding:6px;">
+								<?php esc_html_e( 'Your BriteVerify API Key is valid.', 'briteverify-gravityforms' ); ?>
+							</div>
+							<?php
+						}
+						else{
+							?>
+							<div class="error fade" style="padding:6px;">
+								<?php esc_html_e( 'Your BriteVerify API Key is not valid.', 'briteverify-gravityforms' ); ?>
+							</div>
+							<?php
+						}
+					}
+					elseif( 401 == wp_remote_retrieve_response_code( $raw_response ) ){
+						?>
+						<div class="error fade" style="padding:6px;">
+							<?php esc_html_e( 'Your BriteVerify API Key is not valid.', 'briteverify-gravityforms' ); ?>
+						</div>
+						<?php
+					}
+					update_option( 'bv_gf_api_key', esc_html( trim( $api_key ) ) );
 				}
 				else{
 					delete_option( 'bv_gf_api_key' );
@@ -87,7 +121,7 @@ class BV_GF_Settings{
 				update_option( 'bv_gf_enable', 1 );
 			}
 			else{
-					delete_option( 'bv_gf_enable' );
+				delete_option( 'bv_gf_enable' );
 			}
 
 			/* Default: Allow Disposable */
@@ -124,9 +158,11 @@ class BV_GF_Settings{
 						<label for="bv_gf_api_key"><?php esc_html_e( 'API Key', 'briteverify-gravityforms' ); ?></label>
 					</th>
 					<td>
-						<input type="password" name="bv_gf_api_key" id="bv_gf_api_key" style="width:350px;" value="<?php echo sanitize_text_field( esc_html( get_option( 'bv_gf_api_key' ) ) ); ?>" />
+						<input autocomplete="off" type="text" name="bv_gf_api_key" id="bv_gf_api_key" style="width:350px;" value="<?php echo sanitize_text_field( esc_html( get_option( 'bv_gf_api_key' ) ) ); ?>" />
 						<br />
-						<span class="gf_settings_description"><?php esc_html_e( 'API Key to connect to BriteVerify Real-Time API.', 'briteverify-gravityforms' ); ?></span>
+						<span class="gf_settings_description">
+							<?php esc_html_e( 'API Key to connect to BriteVerify Real-Time API.', 'briteverify-gravityforms' ); ?>
+						</span>
 					</td>
 				</tr>
 
@@ -136,11 +172,11 @@ class BV_GF_Settings{
 					</th>
 					<td>
 						<label>
-							<input type="checkbox" name="bv_gf_enable" id="bv_gf_enable" value="1" <?php checked( 1, get_option( 'bv_gf_enable' ) ); ?>> <?php esc_html_e( 'Enable in all email fields.', 'briteverify-gravityforms' ); ?> <?php gform_tooltip( 'bv_gf_enable' ) ?>
+							<input autocomplete="off" type="checkbox" name="bv_gf_enable" id="bv_gf_enable" value="1" <?php checked( 1, get_option( 'bv_gf_enable' ) ); ?>> <?php esc_html_e( 'Enable in all email fields.', 'briteverify-gravityforms' ); ?> <?php gform_tooltip( 'bv_gf_enable' ) ?>
 						</label>
 						<br />
 						<label>
-							<input type="checkbox" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable" value="1" <?php checked( 1, get_option( 'bv_gf_allow_disposable' ) ); ?>> <?php esc_html_e( 'Allow disposable email.', 'briteverify-gravityforms' ); ?> <?php gform_tooltip( 'bv_gf_allow_disposable' ) ?>
+							<input autocomplete="off" type="checkbox" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable" value="1" <?php checked( 1, get_option( 'bv_gf_allow_disposable' ) ); ?>> <?php esc_html_e( 'Allow disposable email.', 'briteverify-gravityforms' ); ?> <?php gform_tooltip( 'bv_gf_allow_disposable' ) ?>
 						</label>
 					</td>
 				</tr>
@@ -172,6 +208,5 @@ class BV_GF_Settings{
 
 
 }
-
 
 

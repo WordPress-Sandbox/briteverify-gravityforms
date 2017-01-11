@@ -48,19 +48,19 @@ class BV_GF_Field_Settings{
 				<p><span></p>
 				<div>
 
-					<input type="radio" name="bv_gf_enable" id="bv_gf_enable_default" size="10" value="" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );" />
+					<input autocomplete="off" type="radio" name="bv_gf_enable" id="bv_gf_enable_default" size="10" value="" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );" />
 					<label for="bv_gf_enable_default" class="inline">
 						<?php printf( esc_html__( 'Default (%s)', 'briteverify-gravityforms' ), 1 == get_option( 'bv_gf_enable' ) ? __( 'Enabled', 'briteverify-gravityforms' ) : __( 'Disabled', 'briteverify-gravityforms' ) ); ?>
 					</label>
 					&nbsp;&nbsp;
 
-					<input type="radio" name="bv_gf_enable" id="bv_gf_enable_yes" size="10" value="yes" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );"/>
+					<input autocomplete="off" type="radio" name="bv_gf_enable" id="bv_gf_enable_yes" size="10" value="yes" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );"/>
 					<label for="bv_gf_enable_yes" class="inline">
 						<?php esc_html_e( 'Enable', 'briteverify-gravityforms' ); ?>
 					</label>
 					&nbsp;&nbsp;
 
-					<input type="radio" name="bv_gf_enable" id="bv_gf_enable_no" size="10" value="no" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );"/>
+					<input autocomplete="off" type="radio" name="bv_gf_enable" id="bv_gf_enable_no" size="10" value="no" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );"/>
 					<label for="bv_gf_enable_no" class="inline">
 						<?php esc_html_e( 'Disable', 'briteverify-gravityforms' ); ?>
 					</label>
@@ -72,19 +72,19 @@ class BV_GF_Field_Settings{
 				<label class="section_label"><?php esc_html_e( 'BriteVerify: Allow Disposable Email', 'briteverify-gravityforms' ); ?> </label>
 				<div>
 
-					<input type="radio" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable_default" size="10" value="" onclick="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );"/>
+					<input autocomplete="off" type="radio" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable_default" size="10" value="" onclick="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );"/>
 					<label for="bv_gf_allow_disposable_default" class="inline">
 						<?php printf( esc_html__( 'Default (%s)', 'briteverify-gravityforms' ), 1 == get_option( 'bv_gf_allow_disposable' ) ? __( 'Allow', 'briteverify-gravityforms' ) : __( 'Do Not Allow', 'briteverify-gravityforms' ) ); ?>
 					</label>
 					&nbsp;&nbsp;
 
-					<input type="radio" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable_yes" size="10" value="yes" onclick="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );"/>
+					<input autocomplete="off" type="radio" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable_yes" size="10" value="yes" onclick="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );"/>
 					<label for="bv_gf_allow_disposable_yes" class="inline">
 						<?php esc_html_e( 'Allow', 'briteverify-gravityforms' ); ?>
 					</label>
 					&nbsp;&nbsp;
 
-					<input type="radio" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable_no" size="10" value="no" onclick="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );"/>
+					<input autocomplete="off" type="radio" name="bv_gf_allow_disposable" id="bv_gf_allow_disposable_no" size="10" value="no" onclick="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_allow_disposable', this.value );"/>
 					<label for="bv_gf_allow_disposable_no" class="inline">
 						<?php esc_html_e( 'Do Not Allow', 'briteverify-gravityforms' ); ?>
 					</label>
@@ -135,22 +135,4 @@ class BV_GF_Field_Settings{
 		<?php
 	}
 
-
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

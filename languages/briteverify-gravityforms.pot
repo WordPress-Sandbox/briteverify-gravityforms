@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Astoundify Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 07:34+0700\n"
+"POT-Creation-Date: 2017-01-11 21:00+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: Astoundify Plugin <adam@astoundify.com>\n"
@@ -17,21 +17,126 @@ msgstr ""
 "X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/settings.php:62
+#: includes/field-settings.php:47
+msgid "BriteVerify: Enable Verification"
+msgstr ""
+
+#: includes/field-settings.php:53 includes/field-settings.php:77
+#, php-format
+msgid "Default (%s)"
+msgstr ""
+
+#: includes/field-settings.php:53
+msgid "Enabled"
+msgstr ""
+
+#: includes/field-settings.php:53
+msgid "Disabled"
+msgstr ""
+
+#: includes/field-settings.php:59
+msgid "Enable"
+msgstr ""
+
+#: includes/field-settings.php:65
+msgid "Disable"
+msgstr ""
+
+#: includes/field-settings.php:72
+msgid "BriteVerify: Allow Disposable Email"
+msgstr ""
+
+#: includes/field-settings.php:77 includes/field-settings.php:83
+msgid "Allow"
+msgstr ""
+
+#: includes/field-settings.php:77 includes/field-settings.php:89
+msgid "Do Not Allow"
+msgstr ""
+
+#: includes/settings.php:70
+msgid "You don't have adequate permission to edit settings."
+msgstr ""
+
+#: includes/settings.php:93
+msgid "Your BriteVerify API Key is valid."
+msgstr ""
+
+#: includes/settings.php:100 includes/settings.php:108
+msgid "Your BriteVerify API Key is not valid."
+msgstr ""
+
+#: includes/settings.php:138
+msgid "Settings Updated."
+msgstr ""
+
+#: includes/settings.php:148
 msgid "BriteVerify"
 msgstr ""
 
-#: includes/settings.php:65
+#: includes/settings.php:151
 msgid ""
 "BriteVerify is an email verification service to make sure all email input "
 "in your Gravity Forms is valid. <a href=\"http://www.briteverify.com/\" "
 "target=\"_blank\">Read more about BriteVerify</a>."
 msgstr ""
 
-#: includes/settings.php:71
+#: includes/settings.php:158
 msgid "API Key"
 msgstr ""
 
-#: includes/settings.php:76
-msgid "The license key is used for access to automatic upgrades and support."
+#: includes/settings.php:164
+msgid "API Key to connect to BriteVerify Real-Time API."
+msgstr ""
+
+#: includes/settings.php:171
+msgid "Default Options"
+msgstr ""
+
+#: includes/settings.php:175
+msgid "Enable in all email fields."
+msgstr ""
+
+#: includes/settings.php:179
+msgid "Allow disposable email."
+msgstr ""
+
+#: includes/settings.php:187
+msgid "Save Settings"
+msgstr ""
+
+#: includes/settings.php:201
+msgid "Enable In All Email Fields"
+msgstr ""
+
+#: includes/settings.php:201 includes/settings.php:204
+msgid ""
+"This is the default option. You can still disable/enable this feature in "
+"each email field using field settings."
+msgstr ""
+
+#: includes/settings.php:204
+msgid "Allow Disposable Email"
+msgstr ""
+
+#: includes/validation.php:114
+msgid ""
+"Unable to validate email. Email validation request error. Please try again "
+"or contact administrator."
+msgstr ""
+
+#: includes/validation.php:132
+msgid ""
+"Please use your real email address. You are not allowed to use disposable "
+"email in this form."
+msgstr ""
+
+#: includes/validation.php:138
+msgid "Email not valid. Please check your email input."
+msgstr ""
+
+#: includes/validation.php:145
+msgid ""
+"Unable to validate email. Invalid validation API results. Please try again "
+"or contact administrator."
 msgstr ""

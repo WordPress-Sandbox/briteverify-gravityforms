@@ -63,23 +63,7 @@ function bv_gf_init(){
 
 	/* Field Settings */
 	require_once( BV_GF_PATH . 'includes/field-settings.php' );
+
+	/* Validation */
+	require_once( BV_GF_PATH . 'includes/validation.php' );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
