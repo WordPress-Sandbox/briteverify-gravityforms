@@ -1,0 +1,37 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Astoundify Plugin\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-01-11 07:34+0700\n"
+"PO-Revision-Date: \n"
+"Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
+"Language-Team: Astoundify Plugin <adam@astoundify.com>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: _e;__;esc_attr_e;esc_attr__;esc_html_e;esc_html__;_x;"
+"_n;_x:1,2c;_n:1,2\n"
+"X-Poedit-Basepath: ..\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: includes/settings.php:62
+msgid "BriteVerify"
+msgstr ""
+
+#: includes/settings.php:65
+msgid ""
+"BriteVerify is an email verification service to make sure all email input "
+"in your Gravity Forms is valid. <a href=\"http://www.briteverify.com/\" "
+"target=\"_blank\">Read more about BriteVerify</a>."
+msgstr ""
+
+#: includes/settings.php:71
+msgid "API Key"
+msgstr ""
+
+#: includes/settings.php:76
+msgid "The license key is used for access to automatic upgrades and support."
+msgstr ""

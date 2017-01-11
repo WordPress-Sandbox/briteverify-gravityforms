@@ -2,7 +2,7 @@
 /**
  * Plugin Name: BriteVerify GravityForms
  * Plugin URI: http://astoundify.com/downloads/briteverify-gravityforms/
- * Description: {SHORT DESCRIPTION}
+ * Description: Validate GravityForms email input using BriteVerify email verification service.
  * Version: 1.0.0
  * Author: Astoundify
  * Author URI: http://astoundify.com/
@@ -19,12 +19,28 @@ if ( ! defined( 'WPINC' ) ) { die; }
 
 define( 'BV_GF_URI', trailingslashit( plugin_dir_url( __FILE__ ) ) );
 define( 'BV_GF_PATH', trailingslashit( plugin_dir_path( __FILE__ ) ) );
-define( 'BV_GF_FILE', __FILE__ );
-define( 'BV_GF_PLUGIN', plugin_basename( __FILE__ ) );
 define( 'BV_GF_VERSION', '1.0.0' );
 
 
-/* Init
+/* Plugins Loaded
+------------------------------------------ */
+
+/* Load plugin in "plugins_loaded" hook */
+add_action( 'plugins_loaded', 'bv_gf_plugins_loaded' );
+
+/**
+ * Plugins Loaded Hook
+ * @since 1.0.0
+ */
+function bv_gf_plugins_loaded(){
+
+	/* Load translation files */
+	load_plugin_textdomain( dirname( plugin_basename( __FILE__ ) ), false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+}
+
+
+
+/* Plugin Init
 ------------------------------------------ */
 
 /* Load plugin in "gform_loaded" hook */
