@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Astoundify Plugin\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-01-11 21:00+0700\n"
+"POT-Creation-Date: 2017-01-12 07:42+0700\n"
 "PO-Revision-Date: \n"
 "Last-Translator: David Chandra Purnama <david@shellcreeper.com>\n"
 "Language-Team: Astoundify Plugin <adam@astoundify.com>\n"
@@ -17,40 +17,51 @@ msgstr ""
 "X-Generator: Poedit 1.8.11\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: includes/field-settings.php:47
+#: includes/field-settings.php:61
+msgid "BriteVerify Email Verification"
+msgstr ""
+
+#: includes/field-settings.php:63
+#, php-format
+msgid ""
+"Please add your APi Key in <a href=\"%s\" target=\"_blank\">BriteVerify "
+"Settings</a>."
+msgstr ""
+
+#: includes/field-settings.php:92
 msgid "BriteVerify: Enable Verification"
 msgstr ""
 
-#: includes/field-settings.php:53 includes/field-settings.php:77
+#: includes/field-settings.php:97 includes/field-settings.php:121
 #, php-format
 msgid "Default (%s)"
 msgstr ""
 
-#: includes/field-settings.php:53
+#: includes/field-settings.php:97
 msgid "Enabled"
 msgstr ""
 
-#: includes/field-settings.php:53
+#: includes/field-settings.php:97
 msgid "Disabled"
 msgstr ""
 
-#: includes/field-settings.php:59
+#: includes/field-settings.php:103
 msgid "Enable"
 msgstr ""
 
-#: includes/field-settings.php:65
+#: includes/field-settings.php:109
 msgid "Disable"
 msgstr ""
 
-#: includes/field-settings.php:72
+#: includes/field-settings.php:116
 msgid "BriteVerify: Allow Disposable Email"
 msgstr ""
 
-#: includes/field-settings.php:77 includes/field-settings.php:83
+#: includes/field-settings.php:121 includes/field-settings.php:127
 msgid "Allow"
 msgstr ""
 
-#: includes/field-settings.php:77 includes/field-settings.php:89
+#: includes/field-settings.php:121 includes/field-settings.php:133
 msgid "Do Not Allow"
 msgstr ""
 
@@ -58,64 +69,64 @@ msgstr ""
 msgid "You don't have adequate permission to edit settings."
 msgstr ""
 
-#: includes/settings.php:93
+#: includes/settings.php:96
 msgid "Your BriteVerify API Key is valid."
 msgstr ""
 
-#: includes/settings.php:100 includes/settings.php:108
+#: includes/settings.php:103 includes/settings.php:111
 msgid "Your BriteVerify API Key is not valid."
 msgstr ""
 
-#: includes/settings.php:138
+#: includes/settings.php:145
 msgid "Settings Updated."
 msgstr ""
 
-#: includes/settings.php:148
+#: includes/settings.php:155
 msgid "BriteVerify"
 msgstr ""
 
-#: includes/settings.php:151
+#: includes/settings.php:158
 msgid ""
-"BriteVerify is an email verification service to make sure all email input "
-"in your Gravity Forms is valid. <a href=\"http://www.briteverify.com/\" "
-"target=\"_blank\">Read more about BriteVerify</a>."
+"BriteVerify is an email verification service to make sure all email field "
+"submission  in your Gravity Forms is valid. <a href=\"http://www."
+"briteverify.com/\" target=\"_blank\">Read more about BriteVerify</a>."
 msgstr ""
 
-#: includes/settings.php:158
+#: includes/settings.php:165
 msgid "API Key"
 msgstr ""
 
-#: includes/settings.php:164
+#: includes/settings.php:171
 msgid "API Key to connect to BriteVerify Real-Time API."
 msgstr ""
 
-#: includes/settings.php:171
+#: includes/settings.php:178
 msgid "Default Options"
 msgstr ""
 
-#: includes/settings.php:175
+#: includes/settings.php:182
 msgid "Enable in all email fields."
 msgstr ""
 
-#: includes/settings.php:179
+#: includes/settings.php:186
 msgid "Allow disposable email."
 msgstr ""
 
-#: includes/settings.php:187
+#: includes/settings.php:194
 msgid "Save Settings"
 msgstr ""
 
-#: includes/settings.php:201
+#: includes/settings.php:208
 msgid "Enable In All Email Fields"
 msgstr ""
 
-#: includes/settings.php:201 includes/settings.php:204
+#: includes/settings.php:208 includes/settings.php:211
 msgid ""
 "This is the default option. You can still disable/enable this feature in "
-"each email field using field settings."
+"each email field using advanced field settings."
 msgstr ""
 
-#: includes/settings.php:204
+#: includes/settings.php:211
 msgid "Allow Disposable Email"
 msgstr ""
 
@@ -132,7 +143,7 @@ msgid ""
 msgstr ""
 
 #: includes/validation.php:138
-msgid "Email not valid. Please check your email input."
+msgid "Email is not valid. Please check your email input."
 msgstr ""
 
 #: includes/validation.php:145

@@ -111,7 +111,7 @@ class BV_GF_Validation{
 		/* Request to BriteVerify fail */
 		if ( is_wp_error( $raw_response ) || 200 != wp_remote_retrieve_response_code( $raw_response ) ) {
 			$result['is_valid'] = false;
-			$result['message'] = __( 'Unable to validate email. Email validation request error. Please try again or contact administrator.', 'briteverify-grafityforms' );
+			$result['message'] = __( 'Unable to validate email. Email validation request error. Please try again or contact administrator.', 'briteverify-gravityforms' );
 			return $result;
 		}
 
@@ -126,29 +126,25 @@ class BV_GF_Validation{
 				$result['is_valid'] = true;
 				$result['message'] = '';
 
-				/* If do not allow disposable, return error */
+				/* If do not allow disposable and email is disposable, return error */
 				if( ! $allow_dp && isset( $data['disposable'] ) && true == $data['disposable'] ){
 					$result['is_valid'] = false;
-					$result['message'] = __( 'Please use your real email address. You are not allowed to use disposable email in this form.', 'briteverify-grafityforms' );
+					$result['message'] = __( 'Please use your real email address. You are not allowed to use disposable email in this form.', 'briteverify-gravityforms' );
 				}
 			}
 			/* Email not valid */
 			else{
 				$result['is_valid'] = false;
-				$result['message'] = __( 'Email not valid. Please check your email input.', 'briteverify-grafityforms' );
+				$result['message'] = __( 'Email is not valid. Please check your email input.', 'briteverify-gravityforms' );
 			}
 		}
 
-		/* No status data found */
+		/* No status data found (invalid return value) */
 		else{
 			$result['is_valid'] = false;
-			$result['message'] = __( 'Unable to validate email. Invalid validation API results. Please try again or contact administrator.', 'briteverify-grafityforms' );
+			$result['message'] = __( 'Unable to validate email. Invalid validation API results. Please try again or contact administrator.', 'briteverify-gravityforms' );
 		}
 		return $result;
 	}
 
-
 }
-
-
-

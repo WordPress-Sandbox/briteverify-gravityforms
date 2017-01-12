@@ -78,38 +78,45 @@ class BV_GF_Settings{
 
 					/* API Key */
 					$api_key = esc_html( trim( $_POST['bv_gf_api_key'] ) );
+					$api_key_option = esc_html( trim( get_option( 'bv_gf_api_key' ) ) );
 
-					/* Check Key */
-					$url = add_query_arg( array(
-						'address' => urlencode( trim( get_option( 'admin_email' ) ) ),
-						'apikey'  => urlencode( trim( $api_key ) ),
-					), 'https://bpi.briteverify.com/emails.json' );
-					$raw_response = wp_remote_get( esc_url_raw( $url ) );
-					if ( ! is_wp_error( $raw_response ) && 200 == wp_remote_retrieve_response_code( $raw_response ) ) {
-						$data = json_decode( trim( wp_remote_retrieve_body( $raw_response ) ), true );
-						if( isset( $data['status'] ) ){
-							?>
-							<div class="updated fade" style="padding:6px;">
-								<?php esc_html_e( 'Your BriteVerify API Key is valid.', 'briteverify-gravityforms' ); ?>
-							</div>
-							<?php
+					/* Check Key: Only if it's updated (new value) */
+					if( $api_key != $api_key_option ){
+
+						$url = add_query_arg( array(
+							'address' => urlencode( trim( get_option( 'admin_email' ) ) ),
+							'apikey'  => urlencode( trim( $api_key ) ),
+						), 'https://bpi.briteverify.com/emails.json' );
+						$raw_response = wp_remote_get( esc_url_raw( $url ) );
+						if ( ! is_wp_error( $raw_response ) && 200 == wp_remote_retrieve_response_code( $raw_response ) ) {
+							$data = json_decode( trim( wp_remote_retrieve_body( $raw_response ) ), true );
+							if( isset( $data['status'] ) ){
+								?>
+								<div class="updated fade" style="padding:6px;">
+									<?php esc_html_e( 'Your BriteVerify API Key is valid.', 'briteverify-gravityforms' ); ?>
+								</div>
+								<?php
+							}
+							else{
+								?>
+								<div class="error fade" style="padding:6px;">
+									<?php esc_html_e( 'Your BriteVerify API Key is not valid.', 'briteverify-gravityforms' ); ?>
+								</div>
+								<?php
+							}
 						}
-						else{
+						elseif( 401 == wp_remote_retrieve_response_code( $raw_response ) ){
 							?>
 							<div class="error fade" style="padding:6px;">
 								<?php esc_html_e( 'Your BriteVerify API Key is not valid.', 'briteverify-gravityforms' ); ?>
 							</div>
 							<?php
 						}
-					}
-					elseif( 401 == wp_remote_retrieve_response_code( $raw_response ) ){
-						?>
-						<div class="error fade" style="padding:6px;">
-							<?php esc_html_e( 'Your BriteVerify API Key is not valid.', 'briteverify-gravityforms' ); ?>
-						</div>
-						<?php
-					}
-					update_option( 'bv_gf_api_key', esc_html( trim( $api_key ) ) );
+
+						/* Update option with new API Key */
+						update_option( 'bv_gf_api_key', esc_html( trim( $api_key ) ) );
+
+					} // end check updated.
 				}
 				else{
 					delete_option( 'bv_gf_api_key' );
@@ -148,7 +155,7 @@ class BV_GF_Settings{
 			<h3><span><i class="fa fa-envelope-o"></i> <?php _e( 'BriteVerify', 'briteverify-gravityforms' ); ?></span></h3>
 
 			<p style="text-align: left;">
-				<?php _e( 'BriteVerify is an email verification service to make sure all email input in your Gravity Forms is valid. <a href="http://www.briteverify.com/" target="_blank">Read more about BriteVerify</a>.', 'briteverify-gravityforms' ); ?>
+				<?php _e( 'BriteVerify is an email verification service to make sure all email field submission  in your Gravity Forms is valid. <a href="http://www.briteverify.com/" target="_blank">Read more about BriteVerify</a>.', 'briteverify-gravityforms' ); ?>
 			</p>
 
 			<table class="form-table">
@@ -198,15 +205,12 @@ class BV_GF_Settings{
 	public function add_tooltips( $tooltips ){
 
 		/* Default: Enable */
-		$tooltips['bv_gf_enable'] = '<h6>' . esc_html__( 'Enable In All Email Fields', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( 'This is the default option. You can still disable/enable this feature in each email field using field settings.', 'briteverify-gravityforms' );
+		$tooltips['bv_gf_enable'] = '<h6>' . esc_html__( 'Enable In All Email Fields', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( 'This is the default option. You can still disable/enable this feature in each email field using advanced field settings.', 'briteverify-gravityforms' );
 
 		/* Default: Allow Disposable */
-		$tooltips['bv_gf_allow_disposable'] = '<h6>' . esc_html__( 'Allow Disposable Email', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( 'This is the default option. You can still disable/enable this feature in each email field using field settings.', 'briteverify-gravityforms' );
+		$tooltips['bv_gf_allow_disposable'] = '<h6>' . esc_html__( 'Allow Disposable Email', 'briteverify-gravityforms' ) . '</h6>' . esc_html__( 'This is the default option. You can still disable/enable this feature in each email field using advanced field settings.', 'briteverify-gravityforms' );
 
 		return $tooltips;
 	}
 
-
 }
-
-

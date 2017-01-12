@@ -28,12 +28,57 @@ class BV_GF_Field_Settings{
 	 */
 	public function __construct() {
 
-		/* Advance Tab */
-		add_action( 'gform_field_advanced_settings', array( $this, 'advanced_settings' ), 10, 2 );
+		/* API Key is required to use this feature. */
+		$api_key = get_option( 'bv_gf_api_key' );
 
-		/* JS to show the field */
-		add_action( 'gform_editor_js', array( $this, 'field_editor_js' ) );
+		if( ! $api_key ){
 
+			/* Advance Tab: API Key Notice */
+			add_action( 'gform_field_advanced_settings', array( $this, 'advanced_settings_notice' ), 10, 2 );
+
+			/* JS to show the field */
+			add_action( 'gform_editor_js', array( $this, 'field_editor_js_notice' ) );
+		}
+		else{
+
+			/* Advance Tab */
+			add_action( 'gform_field_advanced_settings', array( $this, 'advanced_settings' ), 10, 2 );
+
+			/* JS to show the field */
+			add_action( 'gform_editor_js', array( $this, 'field_editor_js' ) );
+		}
+
+	}
+
+	/**
+	 * Advanced Settings Notice
+	 * @since 1.0.0
+	 */
+	public function advanced_settings_notice( $position, $form_id ){
+		if( 400 === $position ){
+			?>
+			<li class="bv_gf_enable_field_setting_notice field_setting">
+				<label class="section_label"><?php esc_html_e( 'BriteVerify Email Verification', 'briteverify-gravityforms' ); ?> </label>
+				<div>
+					<?php printf( __( 'Please add your APi Key in <a href="%s" target="_blank">BriteVerify Settings</a>.', 'briteverify-gravityforms' ), esc_url( add_query_arg( array( 'page' => 'gf_settings', 'subview' => 'bv_gf'  ), admin_url( 'admin.php' ) ) ) ); ?>
+				</div>
+				<br class="clear" />
+			</li>
+			<?php
+		}
+	}
+
+
+	/**
+	 * Display Notice in Email Field
+	 * @since 1.0.0
+	 */
+	public function field_editor_js_notice(){
+		?>
+		<script type='text/javascript'>
+			fieldSettings["email"] += ", .bv_gf_enable_field_setting_notice";
+		</script>
+		<?php
 	}
 
 	/**
@@ -45,7 +90,6 @@ class BV_GF_Field_Settings{
 			?>
 			<li class="bv_gf_enable_field_setting field_setting">
 				<label class="section_label"><?php esc_html_e( 'BriteVerify: Enable Verification', 'briteverify-gravityforms' ); ?> </label>
-				<p><span></p>
 				<div>
 
 					<input autocomplete="off" type="radio" name="bv_gf_enable" id="bv_gf_enable_default" size="10" value="" onclick="return SetFieldProperty( 'bv_gf_enable', this.value );" onkeypress="return SetFieldProperty( 'bv_gf_enable', this.value );" />
@@ -97,7 +141,8 @@ class BV_GF_Field_Settings{
 	}
 
 	/**
-	 * JS
+	 * Display Options in Email Field and bind the value to the options.
+	 * @since 1.0.0
 	 */
 	public function field_editor_js(){
 		?>
