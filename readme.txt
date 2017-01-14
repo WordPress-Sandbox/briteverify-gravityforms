@@ -8,7 +8,7 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Validate GravityForms email input using BriteVerify email verification service.
+Validate email addresses input into GravityForms using the BriteVerify email verification service.
 
 == Description ==
 
