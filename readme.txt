@@ -15,11 +15,11 @@ Validate email addresses input into GravityForms using the BriteVerify email ver
 **Features:**
 
 1. Easily connect to your BriteVerify subscription.
-1. Settings for default options.
-1. Easily enable in all email field.
-1. Enable/Disable in each email field using advanced settings. 
-1. Allow/disallow disposable email.
-1. Free, Open Source, GPL v2.0 or later license. :) Use it to make something cool.
+2. Settings for default options.
+3. Easily enable in all email field.
+4. Enable/Disable in each email field using advanced settings. 
+5. Allow/disallow disposable email.
+6. Free, Open Source, GPL v2.0 or later license. :) Use it to make something cool.
 
 
 == Installation ==
