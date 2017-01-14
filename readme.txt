@@ -1,4 +1,4 @@
-=== BriteVerify for GravityForms ===
+=== Gravity Forms BriteVerify Add-On ===
 Contributors: Astoundify
 Donate link: https://www.paypal.me/astoundify
 Tags: gravityforms,briteverify,spam,disposable-email,astoundify
