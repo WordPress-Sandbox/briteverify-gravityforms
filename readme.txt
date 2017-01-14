@@ -1,7 +1,7 @@
-=== BriteVerify GravityForms ===
+=== BriteVerify for GravityForms ===
 Contributors: Astoundify
 Donate link: https://www.paypal.me/astoundify
-Tags: gravityforms,briteverify,spam,disposable-email
+Tags: gravityforms,briteverify,spam,disposable-email,astoundify
 Requires at least: 4.4
 Tested up to: 4.7
 Stable tag: 1.0.0
